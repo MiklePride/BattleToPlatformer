@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class DeathState : State
 {
+    [SerializeField] private GameObject _enemyParentObject;
+
     private CapsuleCollider2D _capsuleCollider;
     private float _delayBeforeDestroy = 3f;
 
@@ -18,6 +20,6 @@ public class DeathState : State
     {
         _capsuleCollider.enabled = false;
         Died?.Invoke();
-        Destroy(gameObject, _delayBeforeDestroy);
+        Destroy(_enemyParentObject, _delayBeforeDestroy);
     }
 }
